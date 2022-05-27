@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <title>Aquelarrand - Hydriam</title>
+</head>
+
+<body>
+    <nav class="nav affix">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Aquelarrand</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="caracteristicas.html">Generator</a></li>
+                    <li><a href="dados.html">Dice roller</a></li>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+
+
+    <div class="contenedor">
+        <div class="vacio"></div>
+        <h1>Lanza los dados</h1>
+        <p>Aquelarre utiliza dados de cuatro, seis, ocho y diez caras, especialmente de estos últimos.<br> La mayor parte de los valores que se utilizan en el juego se expresan en porcentajes,<br>lo que permite medir en una escala del 1 al 100 lo bueno que
+            se es en una determinada Competencia.
+        </p>
+
+        <div class="dados">
+            <div class="d4" onclick="d4Roll()"></div>
+            <div class="d6" onclick="d6Roll()"></div>
+            <div class="d8" onclick="d8Roll()"></div>
+            <div class="d10" onclick="d10Roll()"></div>
+            <div class="d100" onclick="d100Roll()"></div>
+        </div>
+        <div class="result">
+            <div id="display"></div>
+        </div>
+    </div>
+
+    <footer class="foo">
+        <div class="foot">
+            <div class="esevg">
+                <img src="./img/aqblanco.svg" alt="Logo blanco svg vectorial" height="100">
+            </div>
+            <div class="aquela">
+                <h2>Aquelarre</h2>
+                <ul>
+                    <li><a href="https://www.nosolorol.com/es/3-aquelarre">Nosolorol</a></li>
+                    <li><a href="https://www.facebook.com/groups/320854464591436">Facebook</a></li>
+                    <li><a href="https://es.wikipedia.org/wiki/Aquelarre_(juego_de_rol)">Wikipedia</a></li>
+                </ul>
+            </div>
+            <div class="links">
+                <h2>Otros enlaces</h2>
+                <ul>
+                    <li><a href="#">About me</a></li>
+                    <li><a href="#">Conctact me</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="er">
+            <p>Alejandro Andreo Padilla<span>Copyright</span>©<span>2022</span>Aquelarrand</p>
+        </div>
+    </footer>
+    <script src="js/dados.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="js/estilo.js"></script> -->
+</body>
+
+</html>
