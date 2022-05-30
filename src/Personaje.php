@@ -377,7 +377,6 @@ class Personaje
     {
         $competenciasPat = competenciasPri($this->profesionPat);
         return array_filter($this->competencias, function (string $competencia) use ($competenciasPat) {
-            // return array_filter($this->getCompetenciasTotales(), function (string $competencia) use ($competenciasPat) {
             return in_array($competencia, $competenciasPat);
         }, ARRAY_FILTER_USE_KEY);
     }
@@ -385,5 +384,24 @@ class Personaje
     public function sesion(): void
     {
         $_SESSION['personaje'] = $this;
+    }
+
+    public function actualizarArmas(): Personaje
+    {
+        $this->armas = [
+            "Arcos" => $this->competencias["Arcos"],
+            "Ballestas" => $this->competencias["Ballestas"],
+            "Cuchillos" => $this->competencias["Cuchillos"],
+            "Escudos" => $this->competencias["Escudos"],
+            "Espadas" => $this->competencias["Espadas"],
+            "Espadones" => $this->competencias["Espadones"],
+            "Hachas" => $this->competencias["Hachas"],
+            "Hondas" => $this->competencias["Hondas"],
+            "Lanzas" => $this->competencias["Lanzas"],
+            "Mazas" => $this->competencias["Mazas"],
+            "Palos" => $this->competencias["Palos"],
+            "Pelea" => $this->competencias["Pelea"]
+        ];
+        return $this;
     }
 }

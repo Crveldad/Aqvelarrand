@@ -11,8 +11,22 @@ if (!isset($_SESSION)) {
 }
 
 $p1 = $_SESSION['personaje'];
+$competencias = $_POST;
 
-$caracteristicasOriginales = $p1->caracteristicas;
+
+foreach ($competencias as $competencia => $valor) {
+    $competencia = str_replace('_', ' ', $competencia);
+    if (array_key_exists($competencia, $p1->competencias)) {
+        $p1->competencias[$competencia] = $valor;
+    }
+}
+
+
+$p1->actualizarArmas();
+$p1->sesion();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +36,7 @@ $caracteristicasOriginales = $p1->caracteristicas;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ficha de personaje</title>
 </head>
 
 <body>
@@ -33,8 +47,10 @@ $caracteristicasOriginales = $p1->caracteristicas;
         </pre>
 
     <?php 
-    ingresos($p1);
+    $p1->ingresos = ingresos($p1);
     rasgosOpe($p1);
+    $p1->actualizarArmas();
+    $p1->sesion();
     ?>
 
     <pre>
@@ -44,9 +60,9 @@ $caracteristicasOriginales = $p1->caracteristicas;
         </pre>
 
     <?php
-    if ($caracteristicasOriginales != $p1->caracteristicas) {
-        //hacer recálculo
-    }
+    // if ($caracteristicasOriginales != $p1->caracteristicas) {
+    //     //hacer recálculo
+    // }
     ?>
 </body>
 
