@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-namespace src;
 
 include_once("Personaje.php");
 

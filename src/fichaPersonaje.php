@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace src;
 
 include_once("Personaje.php");
-include_once("funciones.php");
 
 if (!isset($_SESSION)) {
     session_start();

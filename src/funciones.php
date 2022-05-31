@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-namespace src;
 
 const REINOS = ["Corona de Castilla", "Corona de Aragón", "Reino de Granada", "Reino de Navarra", "Reino de Portugal"];
 const NOM_CAS_M = ["Alarico", "Alejandro", "Alfonso", "Alvar", "Ángel", "Arturo", "Ataúlfo", "Calixto", "Cándido", "Carlos", "César", "Claudio", "Cristóbal", "Diego", "Felipe", "Fernando", "Francisco", "Gabriel", "Gonzalo", "Gregorio", "Guillermo", "Honesto", "Isidoro", "Isidro", "Jorge", "Julián", "Lázaro", "Lope", "Manuel", "Martín", "Mateo", "Mauricio", "Miguel", "Onofre", "Pablo", "Pedro", "Pelayo", "Rafael", "Ramiro", "Ricardo", "Rodolfo", "Rodrigo", "Roque", "Sancho", "Sebastián", "Severo", "Simplicio", "Sixto", "Tancredo", "Teolfo", "Timoteo", "Tomás", "Valentín", "Vicente", "Víctor"];
