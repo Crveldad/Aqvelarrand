@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace src;
 
 include_once("Personaje.php");
+include_once("funciones.php");
 
 if (!isset($_SESSION)) {
     session_start();
@@ -46,11 +47,11 @@ $p1->sesion();
             ?>
         </pre>
 
-    <?php 
+    <?php
     $p1->ingresos = ingresos($p1);
     rasgosOpe($p1);
     $p1->actualizarArmas();
-    $p1->sesion();
+    // $p1->sesion();
     ?>
 
     <pre>
@@ -58,12 +59,6 @@ $p1->sesion();
             print_r($p1)
             ?>
         </pre>
-
-    <?php
-    // if ($caracteristicasOriginales != $p1->caracteristicas) {
-    //     //hacer recálculo
-    // }
-    ?>
 </body>
 
 </html>

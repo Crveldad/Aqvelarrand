@@ -1501,7 +1501,7 @@ function competencias(array $caracteristicas, int $aspecto): array
     return $competencias;
 }
 
-function competenciasFUE(): array
+function competenciasFue(): array
 {
     return [
         "Espadones",
@@ -1510,7 +1510,7 @@ function competenciasFUE(): array
     ];
 }
 
-function competenciasAGI(): array
+function competenciasAgi(): array
 {
     return [
         "Cabalgar",
@@ -1527,7 +1527,7 @@ function competenciasAGI(): array
     ];
 }
 
-function competenciasHAB(): array
+function competenciasHab(): array
 {
     return [
         "Artesanía",
@@ -1545,7 +1545,7 @@ function competenciasHAB(): array
     ];
 }
 
-function competenciasPER(): array
+function competenciasPer(): array
 {
     return [
         "Degustar",
@@ -1560,7 +1560,7 @@ function competenciasPER(): array
     ];
 }
 
-function competenciasCOM(): array
+function competenciasCom(): array
 {
     return [
         "Cantar",
@@ -1573,7 +1573,7 @@ function competenciasCOM(): array
     ];
 }
 
-function competenciasCUL(): array
+function competenciasCul(): array
 {
     return [
         "Alquimia",
@@ -1600,7 +1600,7 @@ function competenciasCUL(): array
 function competenciasMax(string $competencia, array $caracteristicas, int $aspecto): int
 {
     //si es una competencia basada en CUL, el máximo es 100
-    if (in_array($competencia, competenciasCUL())) {
+    if (in_array($competencia, competenciasCul())) {
         return 100;
     }
 
@@ -3445,7 +3445,7 @@ function ingresos(Personaje $personaje): float
         case "Cómico":
         case "Ladrón":
         case "Malsín":
-            $ingresos = $personaje->suerte * 2;
+            $ingresos = $personaje->getSuerte() * 2;
             break;
         case "Alquimista":
             $ingresos = $personaje->pSocial == "Alta Nobleza"
@@ -3694,12 +3694,38 @@ function filtrarArrayPorClave(array $completo, array $existe): array
     }, ARRAY_FILTER_USE_KEY);
 }
 
+function competenciasCaracteristica(string $abreviatura): array
+{
+    switch ($abreviatura) {
+        case 'FUE':
+            return competenciasFue();
+        case 'AGI':
+            return competenciasAgi();
+        case 'HAB':
+            return competenciasHab();
+        case 'PER':
+            return competenciasPer();
+        case 'COM':
+            return competenciasCom();
+        case 'CUL':
+            return competenciasCul();
+    }
+}
+
+
 function recalcular(Personaje $personaje, string $abreviatura, string $operacion, int $cantidad): Personaje
 {
-    //me devuelve el nombre de la función bien formateao
-    $funcion = sprintf("competencias%s", ucfirst($abreviatura));
-
-    $competenciasDependientes = $funcion();
+    //así recupero cómo eran al inicio antes de ninguna modificación
+    $competenciasOriginales = array_merge(
+        competenciasPj($personaje->caracteristicas, $personaje->profesion, $personaje->aspecto, $personaje->getSexo()),
+        armasPj($personaje->caracteristicas, $personaje->profesion, $personaje->getSexo())
+    );
+    $competenciasOriginales = array_merge(
+        competencias($personaje->caracteristicas, $personaje->aspecto),
+        armas($personaje->caracteristicas),
+        $competenciasOriginales
+    );
+    ksort($competenciasOriginales);
 
     $caracteristicaActual = $personaje->caracteristicas[$abreviatura];
 
@@ -3714,27 +3740,26 @@ function recalcular(Personaje $personaje, string $abreviatura, string $operacion
             $personaje->caracteristicas[$abreviatura] = $cantidad;
             break;
     }
-    if ($caracteristicaActual === $personaje->caracteristicas[$abreviatura]) {
+    if ($caracteristicaActual == $personaje->caracteristicas[$abreviatura]) {
         return $personaje;
     }
-    $caracteristicaOriginal = caracteristicas($personaje->profesion)[$abreviatura];
+    $competenciasDependientes = competenciasCaracteristica($abreviatura);
     $competenciasActuales = filtrarArrayPorClave($personaje->competencias, $competenciasDependientes);
 
-    $competenciasOriginales = competenciasPj(
-        $personaje->caracteristicas,
-        $personaje->profesion,
-        $personaje->getAspecto(),
-        $personaje->getSexo()
-    );
-
-    $competenciasOriginales = filtrarArrayPorClave($competenciasOriginales, $competenciasDependientes);
+    // $puntosRepartidos
+    //1. por cada competencia que dependa de la característica que se ha modificado
+    //calcular los puntos que se han repartido previamente;
+    //esto se hace sacando los puntos iniciales basados en la característica antes de modificar
+    //y luego restando el valor de la competencia actual
+    //2. recalcular el nuevo inicial basado en la nueva característica (mod.)
+    //llamando a la función competencias(nueva Caracteristica)
+    //3. asignar las nuevas competencias + diferencia de $puntosRepartidos al personaje
 
     foreach ($competenciasActuales as $nombre => $valor) {
         //si esto es así, no le ha dado ningún punto
-        $puntosRepartidos = $valor === $competenciasOriginales[$nombre]
-            ? 0
-            : $valor - $competenciasOriginales[$nombre];
-
+            $puntosRepartidos = $valor == $competenciasOriginales[$nombre]
+                ? 0
+                : $valor - $competenciasOriginales[$nombre];
         switch ($operacion) {
             case '+':
                 $nuevoValor = $competenciasOriginales[$nombre] += $valor;
