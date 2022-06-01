@@ -223,27 +223,106 @@ const ARMAS_NOB = ["Ballestas", "Cuchillos", "Escudos", "Espadas", "Espadones", 
 let plusBt = document.getElementById("plusBt")
 
 plusBt.addEventListener("click", function() {
-    let plus = document.getElementById("plus");
-    let n = parseInt(plus.innerText);
-    n += 1;
-    plus.innerText = n;
+let plus = document.getElementById("plus");
+let n = parseInt(plus.innerText);
+n += 1;
+plus.innerText = n;
 });
 let mB = document.getElementById("minusBt")
 
 mB.addEventListener("click", function() {
-    let plus = document.getElementById("plus");
-    let n = parseInt(plus.innerText);
-    n -= 1;
-    plus.innerText = n;
+let plus = document.getElementById("plus");
+let n = parseInt(plus.innerText);
+n -= 1;
+plus.innerText = n;
 });
 
 <div class="cc">
-            <i id="plusBt" class="fa fa-plus" aria-hidden="true">
-                <p id="plus">0</p>
-            </i>
-            <i id="minusBt" class="fa fa-minus" aria-hidden="true">
-                <p id="minus">0</p>
-            </i>
-        </div>
+    <i id="plusBt" class="fa fa-plus" aria-hidden="true">
+        <p id="plus">0</p>
+    </i>
+    <i id="minusBt" class="fa fa-minus" aria-hidden="true">
+        <p id="minus">0</p>
+    </i>
+</div>
 
+<!-- //caracteristicas -->
+<form action="competencias.php" method="post">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="" value=<?= $p1->nombre ?>><br />
+    <label for="nombre">Profesión:</label>
+    <input type="text" name="nombre" id="" value=<?= $p1->profesion ?>><br />
+    <label for="fue">FUE</label>
+    <input type="text" class="car" name="fue" id="fue" max=20 min=<?= $p1->caracteristicas["FUE"] ?> value=<?= $p1->caracteristicas["FUE"] ?>>
+    <button type="button" onclick="sumar('fue')"> + </button> <button type="button" onclick="restar('fue')"> - </button><br />
+    <label for="agi">AGI</label>
+    <input type="text" class="car" name="agi" id="agi" max=20 min=<?= $p1->caracteristicas["AGI"] ?> value=<?= $p1->caracteristicas["AGI"] ?>>
+    <button type="button" onclick="sumar('agi')"> + </button> <button type="button" onclick="restar('agi')"> - </button><br />
+    <label for="hab">HAB</label>
+    <input type="text" class="car" name="hab" id="hab" max=20 min=<?= $p1->caracteristicas["HAB"] ?> value=<?= $p1->caracteristicas["HAB"] ?>>
+    <button type="button" onclick="sumar('hab')"> + </button> <button type="button" onclick="restar('hab')"> - </button><br />
+    <label for="res">RES</label>
+    <input type="text" class="car" name="res" id="res" max=20 min=<?= $p1->caracteristicas["RES"] ?> value=<?= $p1->caracteristicas["RES"] ?>>
+    <button type="button" onclick="sumar('res')"> + </button> <button type="button" onclick="restar('res')"> - </button><br />
+    <label for="per">PER</label>
+    <input type="text" class="car" name="per" id="per" max=20 min=<?= $p1->caracteristicas["PER"] ?> value=<?= $p1->caracteristicas["PER"] ?>>
+    <button type="button" onclick="sumar('per')"> + </button> <button type="button" onclick="restar('per')"> - </button><br />
+    <label for="com">COM</label>
+    <input type="text" class="car" name="com" id="com" max=20 min=<?= $p1->caracteristicas["COM"] ?> value=<?= $p1->caracteristicas["COM"] ?>>
+    <button type="button" onclick="sumar('com')"> + </button> <button type="button" onclick="restar('com')"> - </button><br />
+    <label for="cul">CUL</label>
+    <input type="text" class="car" name="cul" id="cul" max=20 min=<?= $p1->caracteristicas["CUL"] ?> value=<?= $p1->caracteristicas["CUL"] ?>>
+    <button type="button" onclick="sumar('cul')"> + </button> <button type="button" onclick="restar('cul')"> - </button><br />
 
+    <p><span id="total"><?= $total ?></span>/100</p>
+    <input type="submit" value="Guardar">
+</form>
+
+<!-- // competencias -->
+
+<body>
+    <form action="paternas.php" method="post">
+        <?php
+        foreach ($p1->getCompetenciasTotales() as $competencias => $valor) {
+        ?>
+            <label for="<?= $competencias ?>"><?= $competencias ?></label>
+            <input type="text" 
+                name="<?= $competencias ?>" 
+                class="com" id="<?= $competencias ?>" 
+                max="<?= competenciasMax($competencias, $p1->caracteristicas, $p1->getAspecto()) ?>"
+                min="<?= $valor ?>" 
+                value="<?= $valor ?>"
+                >
+            <button type="button" onclick="sumar('<?= $competencias ?>')"> + </button> <button type="button" onclick="restar('<?= $competencias ?>')"> - </button><br />
+        <?php
+        }
+
+        ?>
+        <p><span id="total"><?= $total ?></span>/100</p>
+        <input type="submit" value="Guardar">
+
+    </form>
+
+    <!-- // paternas -->
+
+    <form action="fichaPersonaje.php" method="post">
+        <?php
+        //hacer una comparación donde estén las mismas competencias que las del array
+        foreach ($p1->getCompetenciasPat() as $competencias => $valor) {
+        ?>
+            <label for="<?= $competencias ?>"><?= $competencias ?></label>
+            <input type="text" 
+                name="<?= $competencias ?>" 
+                class="pat"
+                id="<?= $competencias ?>" 
+                max="<?= competenciasMax($competencias, $p1->caracteristicas, $p1->getAspecto()) ?>" 
+                min="<?= $valor ?>" 
+                value="<?= $valor ?>">
+            <button type="button" onclick="sumar('<?= $competencias ?>')"> + </button> <button type="button" onclick="restar('<?= $competencias ?>')"> - </button><br />
+        <?php
+        }
+        ?>
+        <p><span id="total"><?= $total ?></span>/25</p>
+        <input type="submit" value="Guardar">
+
+    </form>

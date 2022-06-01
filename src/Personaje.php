@@ -34,7 +34,8 @@ class Personaje
         public array $competencias,
         public array $armas,
         public array $rasgos,
-        public float $ingresos
+        public float $ingresos,
+        private string $enfermedad
     ) {
     }
 
@@ -359,6 +360,19 @@ class Personaje
     public function setIngresos($ingresos)
     {
         $this->ingresos = $ingresos;
+
+        return $this;
+    }
+
+    public function getEnfermedad()
+    {
+        return $this->enfermedad;
+    }
+
+
+    public function setEnfermedad($enfermedad)
+    {
+        $this->enfermedad = $enfermedad;
 
         return $this;
     }

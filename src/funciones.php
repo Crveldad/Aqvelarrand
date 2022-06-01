@@ -14,8 +14,8 @@ const NOM_GAL_M = ["Adrao", "Agostiño", "Alberte", "Aleixo", "André", "Anxio",
 const NOM_GAL_F = ["Adega", "Alis", "Andreia", "Asunta", "Auria", "Branca", "Candela", "Comba", "Dinis", "Dores", "Estrela", "Euxea", "Frol", "Ilda", "Ledicia", "Loisa", "Maruxa", "Mariña", "Martiño", "Miragres", "Nela", "Neves", "Trega", "Tareixa", "Trindade", "Uxia", "Xema", "Xertrude", "Xilda", "Xisela"];
 const NOM_EUS_M = ["Aingeru", "Alex", "Amand", "Anborsti", "Ander", "Anter", "Argia", "Baraxil", "Dunixi", "Edrigu", "Edorta", "Endika", "Erramun", "Gontzal", "Goio", "Gorka", "Gundane", "Igaro", "Ikini", "Imanol", "Iñaki", "Josu", "Jokin", "Karmel", "Koldo", "Lander", "Luken", "Mikel", "Paskal", "Patxi", "Pol", "Shanti", "Ximun", "Zuzen"];
 const NOM_EUS_F = ["Argia", "Alaiñe", "Anixe", "Austiñe", "Batirtze", "Birkide", "Burne", "Bureskunde", "Dunixe", "Elixe", "Ermiñe", "Estitxu", "Garbiñe", "Gaxux", "Gorane", "Ilariñe", "Jokiñe", "Julene", "Katixa", "Kispiñe", "Konxesi", "Kuspiñe", "Libe", "Lide", "Lonora", "Lukene", "Markele", "Mari", "Mariñe", "Mertxe", "Nunile", "Ostatxu", "Seña", "Txaro", "Zutaiola"];
-const NOM_JUD_M = ["Aarón", "Abner", "Abraham", "Absalón", "Asher", "Baltasar", "Daniel", "David", "Eleazar", "Ezequiel", "Hasdai", "Isaac (Ishaq)", "Isaías", "Jacob", "Job", "Jonás (Jonah)", "José (Yosef)", "Josué", "Judas", "Lázaro", "Leví", "Malaquías", "Matías", "Melchor", "Moisés", "(Moshe)", "Nataniel", "Nehemiah", "Nicodemo", "Nicomedes", "Salomón", "(Shelomo)", "Samuel", "(Shemuel)", "Simeón", "Tobías", "Yahia", "Yehudá", "Zacarías"];
-const NOM_JUD_F = ["Ana", "Belén", "Esther", "Judith", "Karima", "Lea", "Libia", "Marta", "Miriam", "Nabila", "Raquel", "(Rajel)", "Rebeca", "(Ribka)", "Ruth", "Salomé", "Sara", "(Zarah)", "Sarwa", "Tamar", "Zenobia"];
+const NOM_JUD_M = ["Aarón", "Abner", "Abraham", "Absalón", "Asher", "Baltasar", "Daniel", "David", "Eleazar", "Ezequiel", "Hasdai", "Isaac", "Ishaq", "Isaías", "Jacob", "Job", "Jonás", "Jonah", "José", "Yosef", "Josué", "Judas", "Lázaro", "Leví", "Malaquías", "Matías", "Melchor", "Moisés", "Moshe", "Nataniel", "Nehemiah", "Nicodemo", "Nicomedes", "Salomón", "Shelomo", "Samuel", "Shemuel", "Simeón", "Tobías", "Yahia", "Yehudá", "Zacarías"];
+const NOM_JUD_F = ["Ana", "Belén", "Esther", "Judith", "Karima", "Lea", "Libia", "Marta", "Miriam", "Nabila", "Raquel", "Rajel", "Rebeca", "Ribka", "Ruth", "Salomé", "Sara", "Zarah", "Sarwa", "Tamar", "Zenobia"];
 const NOM_MUS_M = ["Abbad", "Abbas", "Abid", "Absam", "Abu", "Ahmed", "Ali", "Amir", "Ammar", "Awland", "Badis", "Banu", "Barmaki", "Bazlaf", "Buluggin", "Dawud", "Garur", "Harum", "Hassán", "Hussein", "Khaled", "Malik", "Mubarak", "Muhammad", "Musakkan", "Mustafa", "Mu´tamid", "Mutawakkil", "Othmán", "Qarawi", "Rachid", "Rasiq", "Sumadih", "Yabiz", "Yusuf", "Zuhayr"];
 const NOM_MUS_F = ["Aixa", "Asma", "Fátima", "Hafsah", "Jadicha", "Kalthoum", "Karima", "Khadija", "Ladda", "Latifa", "Miriam", "Moraima", "Najate", "Nasma", "Nuba", "Ouafae", "Rabea", "Salma", "Soraya", "Subh", "Walada", "Zarah", "Zohra", "Zohraida", "Zoraya", "Zubayda"];
 const SIT_FAMILIAR = ["El personaje es hijo bastardo y además desconoce quiénes fueron sus padres: no posee hermanos y se ha criado con un protector o un tutor que le ha enseñado lo que sabe de la vida.", "El personaje ha nacido en el seno de un matrimonio y sus padres todavía están vivos.", "El personaje ha nacido en el seno de un matrimonio, aunque sólo viven su madre y sus hermanos. En caso de ser hijo primogénito, el PJ hereda el título de su padre.", "El personaje ha nacido en el seno de un matrimonio, aunque sólo viven su padre y sus hermanos.", "El personaje ha nacido en el seno de un matrimonio, pero no vive ninguno de sus padres, sólo sus hermanos. En caso de ser hijo primogénito, el PJ hereda el título de su padre."];
@@ -1442,11 +1442,11 @@ function caracteristicas(string $profesion): array
 
 function competencias(array $caracteristicas, int $aspecto): array
 {
-    $agi = $caracteristicas["AGI"];
-    $hab = $caracteristicas["HAB"];
-    $per = $caracteristicas["PER"];
-    $com = $caracteristicas["COM"];
-    $cul = $caracteristicas["CUL"];
+    $agi = (int) $caracteristicas["AGI"];
+    $hab = (int) $caracteristicas["HAB"];
+    $per = (int) $caracteristicas["PER"];
+    $com = (int) $caracteristicas["COM"];
+    $cul = (int) $caracteristicas["CUL"];
 
     $asp = $aspecto;
 
@@ -1612,10 +1612,10 @@ function competenciasMax(string $competencia, array $caracteristicas, int $aspec
 
 function armas(array $caracteristicas): array
 {
-    $fue = $caracteristicas["FUE"];
-    $agi = $caracteristicas["AGI"];
-    $hab = $caracteristicas["HAB"];
-    $per = $caracteristicas["PER"];
+    $fue = (int) $caracteristicas["FUE"];
+    $agi = (int) $caracteristicas["AGI"];
+    $hab = (int) $caracteristicas["HAB"];
+    $per = (int) $caracteristicas["PER"];
 
     $armas = [
         "Arcos" => $per,
@@ -1638,11 +1638,11 @@ function armas(array $caracteristicas): array
 function competenciasPj(array $caracteristicas, string $profesion, int $aspecto, string $sexo): array
 {
 
-    $agi = $caracteristicas["AGI"];
-    $hab = $caracteristicas["HAB"];
-    $per = $caracteristicas["PER"];
-    $com = $caracteristicas["COM"];
-    $cul = $caracteristicas["CUL"];
+    $agi = (int) $caracteristicas["AGI"];
+    $hab = (int) $caracteristicas["HAB"];
+    $per = (int) $caracteristicas["PER"];
+    $com = (int) $caracteristicas["COM"];
+    $cul = (int) $caracteristicas["CUL"];
 
     $asp = $aspecto;
 
@@ -2357,10 +2357,10 @@ function competenciasPj(array $caracteristicas, string $profesion, int $aspecto,
 
 function armasPj(array $caracteristicas, string $profesion, string $sexo): array
 {
-    $fue = $caracteristicas["FUE"];
-    $agi = $caracteristicas["AGI"];
-    $hab = $caracteristicas["HAB"];
-    $per = $caracteristicas["PER"];
+    $fue = (int) $caracteristicas["FUE"];
+    $agi = (int) $caracteristicas["AGI"];
+    $hab = (int) $caracteristicas["HAB"];
+    $per = (int) $caracteristicas["PER"];
 
     switch ($profesion) {
         case "Alguacil":
@@ -2520,6 +2520,14 @@ function competenciasPri(string $profesionPat): array
                 "Astrología",
                 "Conocimiento Mágico",
                 "Leer y Escribir"
+            ];
+            break;
+        case "Ama":
+            $competenciasPri = [
+                "Corte",
+                "Descubrir",
+                "Enseñar",
+                "Sigilo"
             ];
             break;
         case "Artesano":
@@ -2778,12 +2786,28 @@ function competenciasPri(string $profesionPat): array
                 "Navegar"
             ];
             break;
+        case "Qaina":
+            $competenciasPri = [
+                "Cantar",
+                "Elocuencia",
+                "Música",
+                "Seducción"
+            ];
+            break;
         case "Rabino":
             $competenciasPri = [
                 "Elocuencia",
                 "Idioma(Hebreo)",
                 "Leer y Escribir",
                 "Teología"
+            ];
+            break;
+        case "Ramera":
+            $competenciasPri = [
+                "Elocuencia",
+                "Escamotear",
+                "Seducción",
+                "Sigilo"
             ];
             break;
         case "Sacerdote":
@@ -2838,9 +2862,9 @@ function competenciasPri(string $profesionPat): array
 
 function suerte(array $caracteristicas): int
 {
-    $per = $caracteristicas["PER"];
-    $com = $caracteristicas["COM"];
-    $cul = $caracteristicas["CUL"];
+    $per = (int) $caracteristicas["PER"];
+    $com = (int) $caracteristicas["COM"];
+    $cul = (int) $caracteristicas["CUL"];
     return $com + $per + $cul;
 }
 
@@ -2980,7 +3004,7 @@ function irracionalidad(int $racionalidad): int
 function rasgos(): array
 {
     $rasgos = [];
-    array_push($rasgos, ("[" . 2 + 1 . "]") . " - " . RASGOS[2]);
+    array_push($rasgos, ("[" . 40 + 1 . "]") . " - " . RASGOS[40]);
 
     while (sizeof($rasgos) < 4) {
         $tirada = rand(0, 99);
@@ -3035,22 +3059,22 @@ function rasgosOpe(Personaje $personaje): Personaje
                 $tirada = rand(1, 10);
                 switch ($tirada) {
                     case  $tirada <= 2:
-                        $personaje->rasgos["4"] = "El personaje tiene la enfermedad: " . ENFERMEDAD[0];
+                        $personaje->setEnfermedad(ENFERMEDAD[0]);
                         break;
                     case  $tirada <= 4:
-                        $personaje->rasgos["4"] = "El personaje tiene la enfermedad: " . ENFERMEDAD[1];
+                        $personaje->setEnfermedad(ENFERMEDAD[1]);
                         break;
                     case  $tirada <= 6:
-                        $personaje->rasgos["4"] = "El personaje tiene la enfermedad: " . ENFERMEDAD[2];
+                        $personaje->setEnfermedad(ENFERMEDAD[2]);
                         break;
                     case  $tirada <= 8:
-                        $personaje->rasgos["4"] = "El personaje tiene la enfermedad: " . ENFERMEDAD[3];
+                        $personaje->setEnfermedad(ENFERMEDAD[3]);
                         break;
                     case 9:
-                        $personaje->rasgos["4"] = "El personaje tiene la enfermedad: " . ENFERMEDAD[4];
+                        $personaje->setEnfermedad(ENFERMEDAD[4]);
                         break;
                     case 10:
-                        $personaje->rasgos["4"] = "El personaje tiene la enfermedad: " . ENFERMEDAD[5];
+                        $personaje->setEnfermedad(ENFERMEDAD[5]);
                         break;
                 }
                 break;
@@ -3118,10 +3142,10 @@ function rasgosOpe(Personaje $personaje): Personaje
                 //-5 Fuerza, -5 Agilidad, -5 Resistencia
                 // $personaje->caracteristicas["FUE"] -= 5;
                 // $personaje->caracteristicas["AGI"] -= 5;
-                // $personaje->caracteristicas["RES"] -= 5;
                 recalcular($personaje, "FUE", "-", 5);
                 recalcular($personaje, "AGI", "-", 5);
-                recalcular($personaje, "RES", "-", 5);
+                $personaje->caracteristicas["RES"] -= 5;
+                // recalcular($personaje, "RES", "-", 5);
                 break;
             case "22":
                 //-0.30 Altura
@@ -3399,8 +3423,8 @@ function rasgosOpe(Personaje $personaje): Personaje
                 break;
             case "97":
                 //-5 Resistencia
-                // $personaje->caracteristicas["RES"] -= 5;
-                recalcular($personaje, "RES", "-", 5);
+                $personaje->caracteristicas["RES"] -= 5;
+                // recalcular($personaje, "RES", "-", 5);
                 break;
             case "98":
                 //+25 Sanar
@@ -3422,7 +3446,6 @@ function rasgosOpe(Personaje $personaje): Personaje
                 $personaje->competencias["Pelea"] += 10;
                 break;
         }
-        echo "ha hecho la operación número " . $numero . "<br><br>";
     }
     return $personaje;
 }
@@ -3463,7 +3486,7 @@ function ingresos(Personaje $personaje): float
                 : $personaje->competencias["Sanar"] * 5;
             break;
         case "Brujo":
-            $ingresos = $personaje->suerte;
+            $ingresos = $personaje->getSuerte();
             break;
         case "Bufón":
             $ingresos = $personaje->competencias["Elocuencia"] > $personaje->competencias["Saltar"]
@@ -3548,15 +3571,15 @@ function ingresos(Personaje $personaje): float
             $ingresos = 80;
             break;
         case "Pardo":
-            $ingresos = $personaje->suerte * 10;
+            $ingresos = $personaje->getSuerte() * 10;
             break;
         case "Pastor":
             $ingresos = $personaje->competencias["Conocimiento Animal"] / 2;
             break;
         case "Pirata":
             $ingresos = $personaje->pSocial == "Burguesía"
-                ? $personaje->suerte * 15
-                : $personaje->suerte * 5;
+                ? $personaje->getSuerte() * 15
+                : $personaje->getSuerte() * 5;
             break;
         case "Qaina":
             $ingresos = $personaje->competencias["Seducción"] > $personaje->competencias["Cantar"]
@@ -3635,6 +3658,7 @@ function crearPersonaje(): Personaje
     $altura = altura($caracteristicas);
     $peso = peso($caracteristicas["FUE"]);
     $ingresos = 0;
+    $enfermedad = "";
 
     return new Personaje(
         $sexo,
@@ -3663,27 +3687,11 @@ function crearPersonaje(): Personaje
         $competencias,
         $armas,
         $rasgos,
-        $ingresos
+        $ingresos,
+        $enfermedad
     );
 }
 
-function rellenarCaracteristicas(Personaje $p1, int $total): Personaje
-{
-    $puntos = (100 - $total) / 5;
-    while ($puntos < 100) {
-        foreach ($p1->caracteristicas as $caracteristica => $valor) {
-            $maximo = 20 - $valor;
-            //$maximo = 10;
-            $incremento = rand(0, 3) * 5;
-            //$incremento = 15;
-            if ($incremento <= $maximo) {
-                $valor += $incremento;
-            }
-        }
-        //revisar esto que no está bien ¿?
-    }
-    return $p1;
-}
 
 function filtrarArrayPorClave(array $completo, array $existe): array
 {
@@ -3739,38 +3747,26 @@ function recalcular(Personaje $personaje, string $abreviatura, string $operacion
             $personaje->caracteristicas[$abreviatura] = $cantidad;
             break;
     }
+
+    $competenciasRecalculadas = array_merge(
+        competenciasPj($personaje->caracteristicas, $personaje->profesion, $personaje->aspecto, $personaje->getSexo()),
+        armasPj($personaje->caracteristicas, $personaje->profesion, $personaje->getSexo())
+    );
+    $competenciasRecalculadas = array_merge(
+        competencias($personaje->caracteristicas, $personaje->aspecto),
+        armas($personaje->caracteristicas),
+        $competenciasRecalculadas
+    );
+    ksort($competenciasRecalculadas);
     if ($caracteristicaActual == $personaje->caracteristicas[$abreviatura]) {
         return $personaje;
     }
     $competenciasDependientes = competenciasCaracteristica($abreviatura);
     $competenciasActuales = filtrarArrayPorClave($personaje->competencias, $competenciasDependientes);
 
-    // $puntosRepartidos
-    //1. por cada competencia que dependa de la característica que se ha modificado
-    //calcular los puntos que se han repartido previamente;
-    //esto se hace sacando los puntos iniciales basados en la característica antes de modificar
-    //y luego restando el valor de la competencia actual
-    //2. recalcular el nuevo inicial basado en la nueva característica (mod.)
-    //llamando a la función competencias(nueva Caracteristica)
-    //3. asignar las nuevas competencias + diferencia de $puntosRepartidos al personaje
-
     foreach ($competenciasActuales as $nombre => $valor) {
-        //si esto es así, no le ha dado ningún punto
-            $puntosRepartidos = $valor == $competenciasOriginales[$nombre]
-                ? 0
-                : $valor - $competenciasOriginales[$nombre];
-        switch ($operacion) {
-            case '+':
-                $nuevoValor = $competenciasOriginales[$nombre] += $valor;
-                break;
-            case '-':
-                $nuevoValor = $competenciasOriginales[$nombre] -= $valor;
-                break;
-            case '=':
-                $nuevoValor = $competenciasOriginales[$nombre] = $valor;
-                break;
-        }
-        $nuevoValor += $puntosRepartidos;
+        $puntosRepartidos = $valor - $competenciasOriginales[$nombre];
+        $nuevoValor = $competenciasRecalculadas[$nombre] += $puntosRepartidos;
         $personaje->competencias[$nombre] = $nuevoValor;
     }
     return $personaje;
