@@ -3004,7 +3004,7 @@ function irracionalidad(int $racionalidad): int
 function rasgos(): array
 {
     $rasgos = [];
-    array_push($rasgos, ("[" . 40 + 1 . "]") . " - " . RASGOS[40]);
+    // array_push($rasgos, ("[" . 40 + 1 . "]") . " - " . RASGOS[40]);
 
     while (sizeof($rasgos) < 4) {
         $tirada = rand(0, 99);

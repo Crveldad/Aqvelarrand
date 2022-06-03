@@ -40,10 +40,10 @@ $p1->sesion();
             </div>
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
-                    <li><a href="caracteristicas.php">Generator</a></li>
-                    <li><a href="dados.html">Dice roller</a></li>
-                    <li><a href="#">Downloads</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="caracteristicas.php">Generador</a></li>
+                    <li><a href="dados.html">Tiradas</a></li>
+                    <li><a href="login.php">Acceso</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
             <span class="navTrigger">
@@ -237,32 +237,47 @@ $p1->sesion();
         </div>
         </form>
 
+        <div class="vacio3"></div>
     </div>
 
 
     <footer>
         <div class="foot">
-            <div class="foote">
-                <div class="aquela">
-                    <h2>Aquelarre</h2>
-                    <ul>
-                        <li><a href="https://www.nosolorol.com/es/3-aquelarre">Nosolorol</a></li>
-                        <li><a href="https://www.facebook.com/groups/320854464591436">Facebook</a></li>
-                        <li><a href="https://es.wikipedia.org/wiki/Aquelarre_(juego_de_rol)">Wikipedia</a></li>
-                    </ul>
-                </div>
-                <div class="esevg">
-                    <img src="./img/aqblanco.svg" alt="Logo blanco svg vectorial" height="100">
-                </div>
-                <div class="links">
-                    <h2>Enlaces</h2>
-                    <ul>
-                        <li><a href="#">Sobre mí</a></li>
-                        <li><a href="#">Cookies</a></li>
-                        <li><a href="#">Privacidad</a></li>
-                    </ul>
-                </div>
+            <div class="footer-columna">
+                <h2>Aquelarre</h2>
+                <ul>
+                    <li>
+                        <a href="https://www.nosolorol.com/es/3-aquelarre%22%3ENosolorol">Nosolorol</a>
+                    </li>
+                    <li>
+                        <a href=" https://www.facebook.com/groups/320854464591436%22%3EFacebook">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="https://es.wikipedia.org/wiki/Aquelarre_(juego_de_rol)%22%3EWikipedia">Wikipedia</a>
+                    </li>
+                </ul>
             </div>
+            <!--  -->
+            <div class="footer-columna">
+                <img src="./img/aqblanco.svg" alt="Logo blanco svg vectorial" height="100">
+            </div>
+            <!--  -->
+            <div class="footer-columna">
+                <h2>Enlaces</h2>
+                <ul>
+                    <li>
+                        <a href="#">Sobre mí</a>
+                    </li>
+                    <li>
+                        <a href="#">Cookies</a>
+                    </li>
+                    <li>
+                        <a href="#">Privacidad</a>
+                    </li>
+                </ul>
+            </div>
+            <!--  -->
+
         </div>
         <div class="er">
             <p>Alejandro Andreo Padilla<span>Copyright</span>©<span>2022</span>Aquelarrand</p>
