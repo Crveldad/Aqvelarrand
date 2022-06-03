@@ -3620,14 +3620,16 @@ function ingresos(Personaje $personaje): float
 
 function crearPersonaje(): Personaje
 {
-    $sexo = sexo();
+    // $sexo = sexo();
+    $sexo = "M";
     $reino = reino();
     $pueblo = pueblo($reino);
     $sociedad = sociedad($pueblo);
     $nombre = nombre($pueblo, $sexo);
     $pSocial = pSocial($sociedad, $pueblo);
     $titulo = titulo($sociedad, $pSocial, $sexo);
-    $profesion = profesion($sociedad, $pSocial, $reino, $pueblo, $sexo);
+    // $profesion = profesion($sociedad, $pSocial, $reino, $pueblo, $sexo);
+    $profesion = "Rabino";
     $profesionPat = profesion($sociedad, $pSocial, $reino, $pueblo, "M");
     $aspecto = aspecto($sexo);
     $edad = edad();

@@ -60,6 +60,8 @@
         height: 100%;
         background-size: cover;
         background-image: url("../img/fondobn.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     
     body {
@@ -91,7 +93,8 @@
         margin-bottom: 20px;
     }
     
-    .landing {
+    .landing,
+    .ficha {
         width: 60%;
         margin: 0 auto;
     }
@@ -143,6 +146,66 @@
         list-style: pent;
     }
     
+    .ficha {
+        margin-top: 30px;
+    }
+    
+    .ficha h2 {
+        font-family: 'Black Letter';
+        font-size: 2.5em;
+        text-align: center;
+        border-bottom: 2px solid var(--rojo);
+        margin-bottom: 50px;
+    }
+    
+    .ficha p,
+    .ficha div p {
+        /* text-align: left; */
+        font-family: 'Goudy';
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    .ficha span {
+        color: var(--rojo);
+        font-family: 'Goudy';
+    }
+    
+    .descripcion,
+    .familiar,
+    .caracteristicas,
+    .armas,
+    .competencias,
+    .rasgos,
+    .otros {
+        margin-bottom: 30px;
+    }
+    
+    .familiar {
+        margin: 0 auto;
+        width: 60%;
+    }
+    
+    .descripcion,
+    .caracteristicas,
+    .competencias,
+    .armas {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .car_primarias,
+    .armas1,
+    .competencias1 {
+        margin-right: 50px;
+    }
+    
+    .car_secundarias,
+    .armas2,
+    .competencias2 {
+        margin-left: 50px;
+    }
+    
     .vacio {
         height: 65px;
     }
@@ -175,6 +238,7 @@
         width: 100px;
         border: 4px solid var(--rojo);
         border-radius: 10px;
+        cursor: pointer;
     }
     
     .dados div {
@@ -281,6 +345,10 @@
     
     .bot {
         width: 100px;
+    }
+    
+    .bot button {
+        cursor: pointer;
     }
     
     .total {
@@ -872,13 +940,15 @@
     }
     
     @media screen and (max-width:855px) {
-        .landing {
+        .landing,
+        .ficha {
             width: 75%;
         }
     }
     
     @media screen and (max-width:700px) {
-        .landing {
+        .landing,
+        .ficha {
             width: 90%;
         }
     }

@@ -36,12 +36,12 @@ function qEliminarCurso($id)
 
 function comprobarUsuario()
 {
-    return "SELECT email FROM USUARIO WHERE email=?";
+    return "SELECT email FROM usuarios WHERE email = ?";
 }
 
 function insertarUsuario()
 {
-    return "INSERT INTO USUARIO(nombre,email,password,rol) VALUES (:nombre,:email,:password,:rol)";
+    return "INSERT INTO USUARIOS(id, nombre, email, password) VALUES (null,:nombre,:email,:password)";
 }
 
 function qEditarUsuario($nombre, $email, $paswd, $rol, $id)

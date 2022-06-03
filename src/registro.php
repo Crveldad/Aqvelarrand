@@ -10,7 +10,7 @@ function validar(string $usuario, string $email, string $password, string $confi
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         throw new Exception("El email no es válido.");
     }
-    if (!validarEmail($email)) {
+    if (validarEmail($email)) {
         throw new Exception("El email ya está siendo usado.");
     }
     return [
@@ -23,19 +23,27 @@ function validar(string $usuario, string $email, string $password, string $confi
 function validarEmail(string $email)
 {
     $conexion = getConexion();
-    $sql = "SELECT count('email') FROM 'usuarios' where 'email' = ':email'";
+    $sql = "SELECT COUNT(email) FROM usuarios WHERE email = :email";
 
     $sentencia = $conexion->prepare($sql);
     $sentencia->bindParam(':email', $email);
     $sentencia->setFetchMode(PDO::FETCH_ASSOC);
     $sentencia->execute();
-
     //da la cantidad de filas con esa columna = al email, si es 0, es que no hay
-    return $sentencia->fetchColumn() === 0;
+    return $sentencia->fetchColumn() > 0;
 }
 
-function registrar()
+function registrar(array $datos)
 {
+    $sql = "INSERT INTO usuarios(nombre, email, password) VALUES (:user,:email,:pass)";
+    $conexion = getConexion();
+    $sentencia = $conexion->prepare($sql);
+
+    $sentencia->bindParam(':email', $datos["email"]);
+    $sentencia->bindParam(':user', $datos["user"]);
+    $sentencia->bindParam(':pass', $datos["pass"]);
+
+    $sentencia->execute();
 }
 
 
@@ -48,3 +56,13 @@ try {
     $_SESSION["error_registro"] = $th->getMessage();
     header('Location: login.php?tab=register');
 }
+try {
+    registrar($datosUsuario);
+} catch (\Throwable $th) {
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    $_SESSION["error_registro"] = $th->getMessage();
+    header('Location: login.php?tab=register');
+}
+header('Location: login.php');

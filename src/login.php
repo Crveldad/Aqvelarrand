@@ -66,8 +66,8 @@ if (!isset($_SESSION)) {
 
                         <div class="sign-in-htm">
                             <div class="group">
-                                <label for="user" class="label">Usuario</label>
-                                <input id="user" name="user" type="text" class="input">
+                                <label for="email" class="label">Email</label>
+                                <input id="email" name="email" type="text" class="input">
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Contraseña</label>
@@ -78,7 +78,7 @@ if (!isset($_SESSION)) {
                                 <label for="check"><span class="icon"></span> Mantenerme conectado</label>
                             </div>
                             <div class="group">
-                                <input type="submit" class="button" value="Entrar">
+                                <input type="submit" class="button" name="login" value="Entrar">
                                 <input type="hidden" name="type" value="login">
                             </div>
                         </div>
@@ -104,7 +104,7 @@ if (!isset($_SESSION)) {
                                 <input id="email" name="email" type="text" class="input">
                             </div>
                             <div class="group">
-                                <input type="submit" class="button" value="Registrar">
+                                <input type="submit" class="button" name="register" value="Registrar">
                                 <input type="hidden" name="type" value="register">
                             </div>
                         </div>

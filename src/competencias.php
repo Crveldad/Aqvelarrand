@@ -124,6 +124,11 @@ $p1->sesion();
     </div>
     <div class="vacio"></div>
 
+    <pre>
+    <?php
+    var_dump($p1->competencias);
+    ?>
+    </pre>
 
     <footer>
         <div class="foot">

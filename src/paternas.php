@@ -14,8 +14,10 @@ $competencias = $_POST;
 
 //le digo que los valores que no tenga, me los rellene con el mínimo de las Características
 $competenciasTotales = competencias($p1->caracteristicas, $p1->getAspecto());
+// if (!array_key_exists("Idioma(Latín)", $p1->competencias)) {
+//     $competenciasTotales["Idioma(Latín)"] = $p1->caracteristicas["CUL"];
+// }
 $armasTotales = armas($p1->caracteristicas);
-
 
 $competenciasTotales = array_merge($competenciasTotales, $armasTotales);
 ksort($competenciasTotales);
@@ -134,7 +136,11 @@ $total = 0;
 
     </div>
 
-
+    <pre>
+    <?php
+    var_dump($p1->competencias);
+    ?>
+    </pre>
     <footer>
         <div class="foot">
             <div class="footer-columna">
