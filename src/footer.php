@@ -25,13 +25,13 @@
             <h2>Enlaces</h2>
             <ul>
                 <li>
-                    <a href="#">Sobre mí</a>
-                </li>
-                <li>
                     <a href="donaciones.php">Donaciones</a>
                 </li>
                 <li>
-                    <a href="#">Privacidad</a>
+                    <a href="cookies.php">Cookies</a>
+                </li>
+                <li>
+                    <a href="privacidad.php">Privacidad</a>
                 </li>
             </ul>
         </div>
