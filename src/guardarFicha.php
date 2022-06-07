@@ -1,10 +1,11 @@
 <?php
 
+include_once("Personaje.php");
+
 if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once("Personaje.php");
 include_once("conexion.php");
 
 function guardarPersonaje(Personaje $personaje)

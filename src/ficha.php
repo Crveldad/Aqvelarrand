@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-if (!isset($_SESSION)) {
-    session_start();
-}
 
 include_once("Personaje.php");
 
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 $p1 = $_SESSION['personaje'];
 $competencias = $_POST;

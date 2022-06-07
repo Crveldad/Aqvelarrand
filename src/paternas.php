@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
+include_once("Personaje.php");
+
 if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once("Personaje.php");
 
 $p1 = $_SESSION['personaje'];
 
