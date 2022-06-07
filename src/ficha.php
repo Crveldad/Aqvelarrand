@@ -27,10 +27,6 @@ rasgosOpe($p1);
 $p1->actualizarArmas();
 $p1->sesion();
 
-echo "<pre>";
-var_dump($p1->competencias);
-echo "</pre>";
-
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +45,12 @@ echo "</pre>";
     <nav class="nav affix">
         <div class="container">
             <div class="logo">
-                <a href="index.html">Aquelarrand</a>
+                <a href="index.php">Aquelarrand</a>
             </div>
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
                     <li><a href="caracteristicas.php">Generador</a></li>
-                    <li><a href="dados.html">Tiradas</a></li>
+                    <li><a href="dados.php">Tiradas</a></li>
                     <li><a href="login.php">Acceso</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
@@ -108,7 +104,7 @@ echo "</pre>";
             </div>
 
             <h2>Situación familiar</h2>
-            
+
             <div class="familiar">
                 <p><?= $p1->getSitFamiliar() ?></p>
                 <p><span>Número de hermanos:</span> <?= $p1->getHermanos() ?></p>
@@ -204,35 +200,35 @@ echo "</pre>";
                     <p><span>Forzar Mecanismos (HAB): </span><?= $p1->competencias["Forzar Mecanismos"] ?></p>
                     <p><span>Idioma (CUL): </span><?= $p1->competencias["Idioma"] ?></p>
                     <?php
-                    if (array_key_exists("Idioma(Árabe)", $p1->competencias)) {
-                    ?>
-                        <p><span>Idioma(Árabe) (CUL):</span> <?= $p1->competencias["Idioma(Árabe)"] ?></p>
-                    <?php
-                    }
-                    ?>
-                    <?php
-                    if (isset($p1->competencias["Idioma()"])) {
+                    if ($p1->competencias["Idioma()"] > 0) {
                     ?>
                         <p><span>Idioma(Extra) (CUL):</span> <?= $p1->competencias["Idioma()"] ?></p>
                     <?php
                     }
                     ?>
                     <?php
-                    if (isset($p1->competencias["Idioma(Griego)"])) {
+                    if ($p1->competencias["Idioma(Árabe)"] > 0) {
+                    ?>
+                        <p><span>Idioma(Árabe) (CUL):</span> <?= $p1->competencias["Idioma(Árabe)"] ?></p>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if ($p1->competencias["Idioma(Griego)"] > 0) {
                     ?>
                         <p><span>Idioma(Griego) (CUL):</span> <?= $p1->competencias["Idioma(Griego)"] ?></p>
                     <?php
                     }
                     ?>
                     <?php
-                    if (isset($p1->competencias["Idioma(Hebreo)"])) {
+                    if ($p1->competencias["Idioma(Hebreo)"] > 0) {
                     ?>
                         <p><span>Idioma(Hebreo) (CUL):</span> <?= $p1->competencias["Idioma(Hebreo)"] ?></p>
                     <?php
                     }
                     ?>
                     <?php
-                    if (isset($p1->competencias["Idioma(Latín)"])) {
+                    if ($p1->competencias["Idioma(Latín)"] > 0) {
                     ?>
                         <p><span>Idioma(Latín) (CUL):</span> <?= $p1->competencias["Idioma(Latín)"] ?></p>
                     <?php
@@ -277,55 +273,24 @@ echo "</pre>";
                 }
                 ?>
                 <p><span>Ingresos mensuales: </span><?= $p1->ingresos ?> maravedíes</p>
-                <p><span>Dinero inicial: </span><?= $p1->ingresos * 5 ?> maravedíes</p>
+            </div>
+            <div class="guard">
+                <a href="index.php"><button>
+                        <input type="image" img src="img/back.png">
+                    </button></a>
+                <a href="guardarFicha.php"><button>
+                            <input type="image" img src="img/save.png">
+                        </button></a>
             </div>
         </div>
     </div>
 
 
 
-    <footer>
-        <div class="foot">
-            <div class="footer-columna">
-                <h2>Aquelarre</h2>
-                <ul>
-                    <li>
-                        <a href="https://www.nosolorol.com/es/3-aquelarre%22%3ENosolorol">Nosolorol</a>
-                    </li>
-                    <li>
-                        <a href=" https://www.facebook.com/groups/320854464591436%22%3EFacebook">Facebook</a>
-                    </li>
-                    <li>
-                        <a href="https://es.wikipedia.org/wiki/Aquelarre_(juego_de_rol)%22%3EWikipedia">Wikipedia</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  -->
-            <div class="footer-columna">
-                <img src="./img/aqblanco.svg" alt="Logo blanco svg vectorial" height="100">
-            </div>
-            <!--  -->
-            <div class="footer-columna">
-                <h2>Enlaces</h2>
-                <ul>
-                    <li>
-                        <a href="#">Sobre mí</a>
-                    </li>
-                    <li>
-                        <a href="#">Cookies</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacidad</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  -->
+    <?php
+    include_once("footer.php");
+    ?>
 
-        </div>
-        <div class="er">
-            <p>Alejandro Andreo Padilla<span>Copyright</span>©<span>2022</span>Aquelarrand</p>
-        </div>
-    </footer>
     <script type="text/javascript" src="js/paternas.js"></script>
     <script src="js/dados.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

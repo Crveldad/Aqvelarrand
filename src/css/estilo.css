@@ -171,6 +171,12 @@
         font-family: 'Goudy';
     }
     
+    .ficha a {
+        color: var(--rojo);
+        font-family: 'Goudy';
+        font-size: 2em;
+    }
+    
     .descripcion,
     .familiar,
     .caracteristicas,
@@ -196,14 +202,24 @@
     
     .car_primarias,
     .armas1,
+    .ficha1,
     .competencias1 {
         margin-right: 50px;
     }
     
     .car_secundarias,
     .armas2,
+    .ficha2,
     .competencias2 {
         margin-left: 50px;
+    }
+    
+    .guard {
+        margin-bottom: 20px;
+    }
+    
+    .guard a button {
+        margin: 15px;
     }
     
     .vacio {
@@ -826,11 +842,13 @@
         transform: rotate(0);
     }
     
-    .error {
+    .error,
+    .error a {
         font-size: 1.2em;
         font-family: 'Des Malers';
         color: var(--rojo);
         margin-bottom: 5px;
+        text-decoration: none;
     }
     /*FOOTER*/
     /***************************** FOOTER *****************************/

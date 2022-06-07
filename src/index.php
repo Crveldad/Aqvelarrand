@@ -15,12 +15,12 @@
     <nav class="nav">
         <div class="container">
             <div class="logo">
-                <a href="index.html">Aquelarrand</a>
+                <a href="index.php">Aquelarrand</a>
             </div>
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
                     <li><a href="caracteristicas.php">Generador</a></li>
-                    <li><a href="dados.html">Tiradas</a></li>
+                    <li><a href="dados.php">Tiradas</a></li>
                     <li><a href="login.php">Acceso</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
@@ -63,7 +63,7 @@
 
                 <h2>CREACIÓN PERSONAJES</h2>
                 <div class="monje">
-                    <img src="img/monje.png" alt="scriptorium">
+                    <img src="img/monje.gif" alt="scriptorium">
                     <p>
                         Por eso mismo, pensé que sería necesaria una ayuda para conseguir hacer los personajes de forma más rápida, ya que las reglas para crearlos están en el libro y no tienen dificultad para seguirlas. Era preciso automatizar el proceso, y eso es lo que hemos
                         hecho.
@@ -91,54 +91,11 @@
             </div>
         </article>
     </div>
-    <footer>
-        <div class="foot">
-            <div class="footer-columna">
-                <h2>Aquelarre</h2>
-                <ul>
-                    <li>
-                        <a href="https://www.nosolorol.com/es/3-aquelarre%22%3ENosolorol">Nosolorol</a>
-                    </li>
-                    <li>
-                        <a href=" https://www.facebook.com/groups/320854464591436%22%3EFacebook">Facebook</a>
-                    </li>
-                    <li>
-                        <a href="https://es.wikipedia.org/wiki/Aquelarre_(juego_de_rol)%22%3EWikipedia">Wikipedia</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  -->
-            <div class="footer-columna">
-                <a href="index.html">
-                    <img src="./img/aqblanco.svg" alt="Logo blanco svg vectorial" height="100">
-                </a>
-            </div>
-            <!--  -->
-            <div class="footer-columna">
-                <h2>Enlaces</h2>
-                <ul>
-                    <li>
-                        <a href="#">Sobre mí</a>
-                    </li>
-                    <li>
-                        <a href="#">Cookies</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacidad</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  -->
-
-        </div>
-        <div class="er">
-            <p>Alejandro Andreo Padilla<span>Copyright</span>©<span>2022</span>Aquelarrand</p>
-        </div>
-    </footer>
-
-    <!-- Jquery needed -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/estilo.js"></script>
+    <?php
+   include_once("footer.php");
+   ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="js/estilo.js"></script>
 
 
 </body>

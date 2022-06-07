@@ -1442,11 +1442,11 @@ function caracteristicas(string $profesion): array
 
 function competencias(array $caracteristicas, int $aspecto): array
 {
-    $agi = (int) $caracteristicas["AGI"];
-    $hab = (int) $caracteristicas["HAB"];
-    $per = (int) $caracteristicas["PER"];
-    $com = (int) $caracteristicas["COM"];
-    $cul = (int) $caracteristicas["CUL"];
+    $agi = $caracteristicas["AGI"];
+    $hab = $caracteristicas["HAB"];
+    $per = $caracteristicas["PER"];
+    $com = $caracteristicas["COM"];
+    $cul = $caracteristicas["CUL"];
 
     $asp = $aspecto;
 
@@ -1476,6 +1476,11 @@ function competencias(array $caracteristicas, int $aspecto): array
         "Esquivar" => $agi,
         "Forzar Mecanismos" => $hab,
         "Idioma" => $cul,
+        "Idioma()" => 0,
+        "Idioma(Árabe)" => 0,
+        "Idioma(Griego)" => 0,
+        "Idioma(Hebreo)" => 0,
+        "Idioma(Latín)" => 0,
         "Juego" => $hab,
         "Lanzar" => $agi,
         "Leer y Escribir" => $cul,
@@ -1612,10 +1617,10 @@ function competenciasMax(string $competencia, array $caracteristicas, int $aspec
 
 function armas(array $caracteristicas): array
 {
-    $fue = (int) $caracteristicas["FUE"];
-    $agi = (int) $caracteristicas["AGI"];
-    $hab = (int) $caracteristicas["HAB"];
-    $per = (int) $caracteristicas["PER"];
+    $fue = $caracteristicas["FUE"];
+    $agi = $caracteristicas["AGI"];
+    $hab = $caracteristicas["HAB"];
+    $per = $caracteristicas["PER"];
 
     $armas = [
         "Arcos" => $per,
@@ -1638,11 +1643,11 @@ function armas(array $caracteristicas): array
 function competenciasPj(array $caracteristicas, string $profesion, int $aspecto, string $sexo): array
 {
 
-    $agi = (int) $caracteristicas["AGI"];
-    $hab = (int) $caracteristicas["HAB"];
-    $per = (int) $caracteristicas["PER"];
-    $com = (int) $caracteristicas["COM"];
-    $cul = (int) $caracteristicas["CUL"];
+    $agi = $caracteristicas["AGI"];
+    $hab = $caracteristicas["HAB"];
+    $per = $caracteristicas["PER"];
+    $com = $caracteristicas["COM"];
+    $cul = $caracteristicas["CUL"];
 
     $asp = $aspecto;
 
@@ -2357,10 +2362,10 @@ function competenciasPj(array $caracteristicas, string $profesion, int $aspecto,
 
 function armasPj(array $caracteristicas, string $profesion, string $sexo): array
 {
-    $fue = (int) $caracteristicas["FUE"];
-    $agi = (int) $caracteristicas["AGI"];
-    $hab = (int) $caracteristicas["HAB"];
-    $per = (int) $caracteristicas["PER"];
+    $fue = $caracteristicas["FUE"];
+    $agi = $caracteristicas["AGI"];
+    $hab = $caracteristicas["HAB"];
+    $per = $caracteristicas["PER"];
 
     switch ($profesion) {
         case "Alguacil":
@@ -2862,9 +2867,9 @@ function competenciasPri(string $profesionPat): array
 
 function suerte(array $caracteristicas): int
 {
-    $per = (int) $caracteristicas["PER"];
-    $com = (int) $caracteristicas["COM"];
-    $cul = (int) $caracteristicas["CUL"];
+    $per = $caracteristicas["PER"];
+    $com = $caracteristicas["COM"];
+    $cul = $caracteristicas["CUL"];
     return $com + $per + $cul;
 }
 
@@ -3620,16 +3625,14 @@ function ingresos(Personaje $personaje): float
 
 function crearPersonaje(): Personaje
 {
-    // $sexo = sexo();
-    $sexo = "M";
+    $sexo = sexo();
     $reino = reino();
     $pueblo = pueblo($reino);
     $sociedad = sociedad($pueblo);
     $nombre = nombre($pueblo, $sexo);
     $pSocial = pSocial($sociedad, $pueblo);
     $titulo = titulo($sociedad, $pSocial, $sexo);
-    // $profesion = profesion($sociedad, $pSocial, $reino, $pueblo, $sexo);
-    $profesion = "Rabino";
+    $profesion = profesion($sociedad, $pSocial, $reino, $pueblo, $sexo);
     $profesionPat = profesion($sociedad, $pSocial, $reino, $pueblo, "M");
     $aspecto = aspecto($sexo);
     $edad = edad();
@@ -3773,3 +3776,66 @@ function recalcular(Personaje $personaje, string $abreviatura, string $operacion
     }
     return $personaje;
 }
+
+// function devolverPersonaje(object $personaje): Personaje
+// {
+//     $sexo = $personaje->getSexo();
+//     $reino = $personaje->reino;
+//     $pueblo = $personaje->getPueblo();
+//     $sociedad = $personaje->sociedad;
+//     $nombre = $personaje->nombre;
+//     $pSocial = $personaje->pSocial;
+//     $titulo = $personaje->titulo;
+//     $profesion = $personaje->profesion;
+//     $profesionPat = $personaje->getProfesionPat();
+//     $aspecto = $personaje->aspecto;
+//     $edad = $personaje->edad;
+//     $sitFamiliar = $personaje->getSitFamiliar();
+//     $hermanos = $personaje->getHermanos();
+//     $varones = $personaje->getVarones();
+//     $hembras = $personaje->getHembras();
+//     $posicion = $personaje->getPosicion();
+//     $templanza = $personaje->templanza;
+//     $racionalidad = $personaje->racionalidad;
+//     $irracionalidad = $personaje->irracionalidad;
+//     $caracteristicas = $personaje->caracteristicas;
+//     $competencias = $personaje->competencias;
+//     $armas = $personaje->armas;
+//     $rasgos = $personaje->rasgos;
+//     $suerte = $personaje->getSuerte();
+//     $altura = $personaje->altura;
+//     $peso = $personaje->peso;
+//     $ingresos = $personaje->ingresos;
+//     $enfermedad = $personaje->getEnfermedad();
+
+//     return new Personaje(
+//         $sexo,
+//         $nombre,
+//         $reino,
+//         $pueblo,
+//         $sociedad,
+//         $pSocial,
+//         $titulo,
+//         $profesion,
+//         $profesionPat,
+//         $sitFamiliar,
+//         $hermanos,
+//         $varones,
+//         $hembras,
+//         $posicion,
+//         $aspecto,
+//         $templanza,
+//         $edad,
+//         $altura,
+//         $peso,
+//         $racionalidad,
+//         $irracionalidad,
+//         $suerte,
+//         $caracteristicas,
+//         $competencias,
+//         $armas,
+//         $rasgos,
+//         $ingresos,
+//         $enfermedad
+//     );
+// }

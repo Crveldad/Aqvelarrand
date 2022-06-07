@@ -47,12 +47,12 @@ $p1->sesion();
     <nav class="nav affix">
         <div class="container">
             <div class="logo">
-                <a href="index.html">Aquelarrand</a>
+                <a href="index.php">Aquelarrand</a>
             </div>
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
                 <li><a href="caracteristicas.php">Generador</a></li>
-                    <li><a href="dados.html">Tiradas</a></li>
+                    <li><a href="dados.php">Tiradas</a></li>
                     <li><a href="login.php">Acceso</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
@@ -124,54 +124,10 @@ $p1->sesion();
     </div>
     <div class="vacio"></div>
 
-    <pre>
-    <?php
-    var_dump($p1->competencias);
-    ?>
-    </pre>
+        <?php
+   include_once("footer.php");
+   ?>
 
-    <footer>
-        <div class="foot">
-            <div class="footer-columna">
-                <h2>Aquelarre</h2>
-                <ul>
-                    <li>
-                        <a href="https://www.nosolorol.com/es/3-aquelarre%22%3ENosolorol">Nosolorol</a>
-                    </li>
-                    <li>
-                        <a href=" https://www.facebook.com/groups/320854464591436%22%3EFacebook">Facebook</a>
-                    </li>
-                    <li>
-                        <a href="https://es.wikipedia.org/wiki/Aquelarre_(juego_de_rol)%22%3EWikipedia">Wikipedia</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  -->
-            <div class="footer-columna">
-                <img src="./img/aqblanco.svg" alt="Logo blanco svg vectorial" height="100">
-            </div>
-            <!--  -->
-            <div class="footer-columna">
-                <h2>Enlaces</h2>
-                <ul>
-                    <li>
-                        <a href="#">Sobre mí</a>
-                    </li>
-                    <li>
-                        <a href="#">Cookies</a>
-                    </li>
-                    <li>
-                        <a href="#">Privacidad</a>
-                    </li>
-                </ul>
-            </div>
-            <!--  -->
-
-        </div>
-        <div class="er">
-            <p>Alejandro Andreo Padilla<span>Copyright</span>©<span>2022</span>Aquelarrand</p>
-        </div>
-    </footer>
     <script type="text/javascript" src="js/competencias.js"></script>
     <script src="js/dados.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

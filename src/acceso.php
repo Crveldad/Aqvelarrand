@@ -31,6 +31,5 @@ if (empty($usuario)) {
     header('Location: login.php');
 }
 
-
 $_SESSION["usuario"] = $usuario;
 header('Location: listado.php');

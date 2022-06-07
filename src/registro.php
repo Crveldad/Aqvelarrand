@@ -49,20 +49,20 @@ function registrar(array $datos)
 
 try {
     $datosUsuario = validar($_POST["user"], $_POST["email"], $_POST["pass"], $_POST["pass2"]);
-} catch (\Throwable $th) {
+} catch (Exception $e) {
     if (!isset($_SESSION)) {
         session_start();
     }
-    $_SESSION["error_registro"] = $th->getMessage();
+    $_SESSION["error_registro"] = $e->getMessage();
     header('Location: login.php?tab=register');
 }
 try {
     registrar($datosUsuario);
-} catch (\Throwable $th) {
+} catch (Exception $e) {
     if (!isset($_SESSION)) {
         session_start();
     }
-    $_SESSION["error_registro"] = $th->getMessage();
+    $_SESSION["error_registro"] = $e->getMessage();
     header('Location: login.php?tab=register');
 }
 header('Location: login.php');
