@@ -64,5 +64,7 @@ try {
     }
     $_SESSION["error_registro"] = $e->getMessage();
     header('Location: login.php?tab=register');
+    die();
 }
 header('Location: login.php');
+die();

@@ -1,15 +1,12 @@
 <?php
 
 declare(strict_types=1);
-
-include_once("Personaje.php");
-include("conexion.php");
-
 if (!isset($_SESSION)) {
     session_start();
 }
 
-
+include_once("Personaje.php");
+include("conexion.php");
 
 ?>
 
@@ -91,7 +88,8 @@ if (!isset($_SESSION)) {
             }
         } else {
             $_SESSION["error_login"] = "Debes estar logueado o es otra cosa.";
-            // header('Location: login.php');
+            header('Location: login.php');
+            die();
         }
         ?>
        

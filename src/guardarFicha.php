@@ -3,6 +3,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+
 include_once("Personaje.php");
 include_once("conexion.php");
 
@@ -267,6 +268,7 @@ try {
     guardarCompetencias($personaje);
     $_SESSION["mensaje"] = "Personaje guardado en la base de datos";
     header('Location: listado.php');
+    die();
 } catch (\Throwable $th) {
     echo "Ha ocurrido un error, vuelve a intentarlo." . $th->getMessage();
 }

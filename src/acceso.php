@@ -29,7 +29,9 @@ try {
 if (empty($usuario)) {
     $_SESSION["error_login"] = "El usuario no existe.";
     header('Location: login.php');
+    die();
 }
 
 $_SESSION["usuario"] = $usuario;
 header('Location: listado.php');
+die();
