@@ -1,3 +1,10 @@
+<?php
+
+declare(strict_types=1);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
-    <title>Aquelarrand - Hydriam</title>
+    <title>Aquelarrand - Donatio</title>
 </head>
 
 <body>
@@ -32,34 +39,20 @@
         </div>
     </nav>
 
-
     <div class="contenedor">
         <div class="vacio"></div>
-        <h1>Lanza los dados</h1>
-        <p>Aquelarre utiliza dados de cuatro, seis, ocho y diez caras, especialmente de estos últimos.<br> La mayor parte de los valores que se utilizan en el juego se expresan en porcentajes,<br>lo que permite medir en una escala del 1 al 100 lo bueno que
-            se es en una determinada Competencia.
-        </p>
-
-        <div class="dados">
-            <div class="d4" onclick="d4Roll()"></div>
-            <div class="d6" onclick="d6Roll()"></div>
-            <div class="d8" onclick="d8Roll()"></div>
-            <div class="d10" onclick="d10Roll()"></div>
-            <div class="d100" onclick="d100Roll()"></div>
-        </div>
-        <div class="result">
-            <div id="display"></div>
+        <h1>Donaciones</h1>
+        <p>Para que la página web siga activa es necesario un pequeño aporte.<br>
+            Muchas gracias por colaborar.</p>
+        <div class="donacion">
+            <a href="https://www.paypal.com/donate/?business=PYHKBFYUJ8KZ8&no_recurring=0&item_name=Aquelarrand%3A+Generador+de+personajes&currency_code=EUR">
+                <img src="img/aqfalero.jpg" width="1000px" alt="Falero"></a>
         </div>
     </div>
-    <div class="vacio2"></div>
 
     <?php
-   include_once("footer.php");
-   ?>
-   
-    <script src="js/dados.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- <script src="js/estilo.js"></script> -->
+    include_once("footer.php");
+    ?>
 </body>
 
 </html>

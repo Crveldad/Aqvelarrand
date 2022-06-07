@@ -36,7 +36,7 @@ if (!isset($_SESSION)) {
                     <li><a href="caracteristicas.php">Generador</a></li>
                     <li><a href="dados.php">Tiradas</a></li>
                     <li><a href="login.php">Acceso</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="mailto:crveldad@hotmail.com">Contacto</a></li>
                 </ul>
             </div>
             <span class="navTrigger">

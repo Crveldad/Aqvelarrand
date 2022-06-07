@@ -28,7 +28,7 @@
                     <a href="#">Sobre mí</a>
                 </li>
                 <li>
-                    <a href="#">Donaciones</a>
+                    <a href="donaciones.php">Donaciones</a>
                 </li>
                 <li>
                     <a href="#">Privacidad</a>
